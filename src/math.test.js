@@ -29,3 +29,31 @@ it("should yield a correct sum if array of numeric string values is provided", (
 
   expect(result).toBe(expectedResult);
 });
+
+it("should yield 0 if empty array is passed", () => {
+  const numbers = [];
+  const expectedResult = 0;
+
+  const result = add(numbers);
+
+  expect(result).toBe(expectedResult);
+});
+
+it("should throw an error no value is passed", () => {
+  const resultFn = () => {
+    add();
+  };
+
+  expect(resultFn).toThrow();
+});
+
+it("should throw an error if provided with multiple arguments instead of an array", () => {
+  const num1 = 1;
+  const num2 = 2;
+
+  const resultFn = () => {
+    add(num1, num2);
+  };
+
+  expect(resultFn).toThrow(/is not iterable/);
+});
